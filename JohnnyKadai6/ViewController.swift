@@ -8,7 +8,8 @@
 import UIKit
 
 final class ViewController: UIViewController {
-    private let randomValue = Int.random(in: 1...100)
+    private var randomNum = RandomNum()
+
     @IBOutlet private weak var valueLabel: UILabel!
 
     @IBOutlet private weak var slider: UISlider!
@@ -19,7 +20,7 @@ final class ViewController: UIViewController {
     @IBAction private func judgeTheResult(_ sender: Any) {
         let sliderValue = Int(slider.value)
 
-        guard randomValue == sliderValue else {
+        guard randomNum.num == sliderValue else {
             showAlert(message: JudgementResult.incorrect + "\(sliderValue)")
             return
         }
@@ -28,7 +29,7 @@ final class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        valueLabel.text = "\(randomValue)"
+        valueLabel.text = "\(randomNum.generateRandomNum())"
     }
 
 
