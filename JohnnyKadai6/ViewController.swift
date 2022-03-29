@@ -1,4 +1,4 @@
- //
+//
 //  ViewController.swift
 //  JohnnyKadai6
 //
@@ -7,25 +7,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
+    @IBOutlet private weak var valueLabel: UILabel!
 
-    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet private weak var slider: UISlider!
 
-    @IBOutlet weak var slider: UISlider!
-
-    @IBAction func AdjustTheValue(_ sender: Any) {
-
+    @IBAction private func adjustTheValue(_ sender: Any) {
     }
 
-    @IBAction func judgeTheResult(_ sender: Any) {
-
+    @IBAction private func judgeTheResult(_ sender: Any) {
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
 }
-
