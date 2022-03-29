@@ -14,9 +14,6 @@ final class ViewController: UIViewController {
 
     @IBOutlet private weak var slider: UISlider!
 
-    @IBAction private func adjustTheValue(_ sender: Any) {
-    }
-
     @IBAction private func judgeTheResult(_ sender: Any) {
         let sliderValue = Int(slider.value)
 
@@ -31,8 +28,6 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
         valueLabel.text = "\(randomNum.generateRandomNum())"
     }
-
-
 
     private func showAlert(message: String) {
         let alertController = UIAlertController(title: "結果", message: message, preferredStyle: .alert)
