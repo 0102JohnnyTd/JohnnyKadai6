@@ -20,6 +20,6 @@ final class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        valueLabel.text = "\(Int.random(in: 1...100))"
     }
 }
