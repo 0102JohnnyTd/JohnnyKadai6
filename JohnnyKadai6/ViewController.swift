@@ -1,4 +1,4 @@
-//
+ //
 //  ViewController.swift
 //  JohnnyKadai6
 //
@@ -8,6 +8,18 @@
 import UIKit
 
 class ViewController: UIViewController {
+
+    @IBOutlet weak var valueLabel: UILabel!
+
+    @IBOutlet weak var slider: UISlider!
+
+    @IBAction func AdjustTheValue(_ sender: Any) {
+
+    }
+
+    @IBAction func judgeTheResult(_ sender: Any) {
+
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
