@@ -7,8 +7,13 @@
 
 import UIKit
 
+private enum JudgementMessage {
+    static let correct = "あたり!\nあなたの値: "
+    static let incorrect = "はずれ！\nあなたの値: "
+}
+
 final class ViewController: UIViewController {
-    private var randomNum = RandomNum()
+    private var correctAnswer = CorrectAnswer()
 
     @IBOutlet private weak var valueLabel: UILabel!
 
@@ -17,16 +22,16 @@ final class ViewController: UIViewController {
     @IBAction private func judgeTheResult(_ sender: Any) {
         let sliderValue = Int(slider.value)
 
-        guard randomNum.num == sliderValue else {
-            showAlert(message: JudgementResult.incorrect + "\(sliderValue)")
-            return
+        if correctAnswer.value == sliderValue {
+            showAlert(message: JudgementMessage.correct + "\(sliderValue)")
+        } else {
+            showAlert(message: JudgementMessage.incorrect + "\(sliderValue)")
         }
-        showAlert(message: JudgementResult.correct + "\(sliderValue)")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        valueLabel.text = "\(randomNum.generateRandomNum())"
+        valueLabel.text = "\(correctAnswer.value)"
     }
 
     private func showAlert(message: String) {
