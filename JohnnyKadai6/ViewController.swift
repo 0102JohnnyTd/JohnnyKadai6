@@ -7,6 +7,11 @@
 
 import UIKit
 
+private enum JudgementMessage {
+    static let correct = "あたり!\nあなたの値: "
+    static let incorrect = "はずれ！\nあなたの値: "
+}
+
 final class ViewController: UIViewController {
     private var correctAnswer = CorrectAnswer()
 
@@ -18,9 +23,9 @@ final class ViewController: UIViewController {
         let sliderValue = Int(slider.value)
 
         if correctAnswer.value == sliderValue {
-            showAlert(message: JudgementResult.correct + "\(sliderValue)")
+            showAlert(message: JudgementMessage.correct + "\(sliderValue)")
         } else {
-            showAlert(message: JudgementResult.incorrect + "\(sliderValue)")
+            showAlert(message: JudgementMessage.incorrect + "\(sliderValue)")
         }
     }
 
