@@ -7,12 +7,12 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
-    private enum JudgementResult {
-        static let correct = "あたり!\nあなたの値: "
-        static let incorrect = "はずれ！\nあなたの値: "
-    }
+private enum JudgementMessage {
+    static let correct = "あたり!\nあなたの値: "
+    static let incorrect = "はずれ！\nあなたの値: "
+}
 
+final class ViewController: UIViewController {
     private var correctAnswer = CorrectAnswer()
 
     @IBOutlet private weak var valueLabel: UILabel!
@@ -21,16 +21,22 @@ final class ViewController: UIViewController {
 
     @IBAction private func judgeTheResult(_ sender: Any) {
         let sliderValue = Int(slider.value)
+        let message: String
 
         if correctAnswer.value == sliderValue {
-            showAlert(message: JudgementResult.correct + "\(sliderValue)")
+            message = JudgementMessage.correct
         } else {
-            showAlert(message: JudgementResult.incorrect + "\(sliderValue)")
+            message = JudgementMessage.incorrect
         }
+        showAlert(message: message + "\(sliderValue)")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateValueLabel()
+    }
+
+    private func updateValueLabel() {
         valueLabel.text = "\(correctAnswer.value)"
     }
 
@@ -38,7 +44,8 @@ final class ViewController: UIViewController {
         let alertController = UIAlertController(title: "結果", message: message, preferredStyle: .alert)
 
         alertController.addAction(UIAlertAction(title: "再挑戦する", style: .default) { _ in
-            self.valueLabel.text = "\(self.correctAnswer.regenerate())"
+            self.correctAnswer.regenerate()
+            self.updateValueLabel()
         })
 
         present(alertController, animated: true, completion: nil)

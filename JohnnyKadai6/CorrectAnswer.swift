@@ -10,9 +10,8 @@ import Foundation
 final class CorrectAnswer {
     private (set) var value = CorrectAnswerGenerator().generate()
 
-    func regenerate() -> Int {
+    func regenerate() {
         value = CorrectAnswerGenerator().generate()
-        return value
     }
 }
 
